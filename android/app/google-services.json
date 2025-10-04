@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "993316165292",
+    "project_id": "abuth-navigate-me",
+    "storage_bucket": "abuth-navigate-me.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993316165292:android:c9f9a5356df56ee36f3109",
+        "android_client_info": {
+          "package_name": "com.mycompany.abuthnavigate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993316165292-837bis3d10fuavflkb783u4rjc9o93le.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.abuthnavigate",
+            "certificate_hash": "ab520aacc6d5d433495fcbfb4ee88cbec7333fb0"
+          }
+        },
+        {
+          "client_id": "993316165292-bnga6dkd4rl799tonmuionfgd46bcoj0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mycompany.abuthnavigate",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "993316165292-6i9v3988o0ekkg6mk24h055uvdi3a8fe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFsecr_-mBXEcIV0ffmXXnwCanZZQX9Vg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993316165292-6i9v3988o0ekkg6mk24h055uvdi3a8fe.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "993316165292-3nr9jnm3o0itporqj86ljgdnplgluona.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mycompany.abuthnavigate"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
