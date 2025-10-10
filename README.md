@@ -72,10 +72,10 @@ google_sign_in: ^6.0.2
 - Flutter SDK (3.0.0 or later)
 - Dart SDK (3.0.0 or later)
 - Android Studio / Xcode for mobile development
-- Firebase project setup
-- Google Maps API key
+- Firebase project (for authentication and database)
+- Google Maps API key (for navigation features)
 
-### Steps
+### Quick Start
 
 1. **Clone the repository**
 ```bash
@@ -88,38 +88,190 @@ cd abuth-navigate
 flutter pub get
 ```
 
-3. **Firebase Setup**
-   - Create a Firebase project
-   - Add Android/iOS apps to your Firebase project
-   - Download and place `google-services.json` (Android) and `GoogleService-Info.plist` (iOS)
-   - Enable Authentication, Firestore, and Storage in Firebase Console
-
-4. **Google Maps Setup**
-   - Get a Google Maps API key from Google Cloud Console
-   - Enable Maps SDK for Android and iOS
-   - Add the API key to:
-     - `android/app/src/main/AndroidManifest.xml`
-     - `ios/Runner/AppDelegate.swift`
-
-5. **Run the app**
+3. **Run with existing configuration**
 ```bash
-# For Android
+# The project includes sample Firebase and Google Maps configuration
+# For development/testing purposes, you can run directly:
 flutter run
-
-# For iOS
-flutter run -d ios
-
-# For Web (limited functionality)
-flutter run -d chrome
 ```
 
-## 🔧 Configuration
+### Production Setup
 
-### Firebase Configuration
-Update the Firebase configuration in `lib/backend/firebase/firebase_config.dart` with your project credentials.
+For production deployment, you'll need to set up your own Firebase project and Google Maps API:
 
-### Google Maps API
-Add your Google Maps API key to the respective platform configurations.
+#### 🔥 Firebase Configuration
+
+The project includes sample Firebase configuration files:
+- `android/app/google-services.json` (Android Firebase config)
+- `ios/Runner/GoogleService-Info.plist` (iOS Firebase config)
+- `lib/backend/firebase/firebase_config.dart` (App configuration)
+
+**To set up your own Firebase:**
+
+1. **Create Firebase Project**
+   - Go to [Firebase Console](https://console.firebase.google.com/)
+   - Create a new project: `abuth-navigate-[your-suffix]`
+   - Enable Google Analytics (optional)
+
+2. **Add Android App**
+   - Click "Add app" → Android
+   - Package name: `com.mycompany.abuthnavigate`
+   - Download `google-services.json`
+   - Replace `android/app/google-services.json`
+
+3. **Add iOS App**
+   - Click "Add app" → iOS
+   - Bundle ID: `com.mycompany.abuthnavigate`
+   - Download `GoogleService-Info.plist`
+   - Replace `ios/Runner/GoogleService-Info.plist`
+
+4. **Enable Firebase Services**
+   ```
+   Authentication → Sign-in method:
+   - ✅ Email/Password
+   - ✅ Google
+   - ✅ Apple (for iOS)
+   - ✅ Anonymous
+   
+   Firestore Database:
+   - ✅ Create database (Start in test mode)
+   
+   Storage:
+   - ✅ Create default bucket
+   ```
+
+5. **Update Configuration**
+   - Update `lib/backend/firebase/firebase_config.dart` with your project credentials
+
+#### 🗺️ Google Maps Setup
+
+The project includes sample Google Maps API keys:
+- **Android**: In `android/app/src/main/AndroidManifest.xml` (line 58)
+- **iOS**: In `ios/Runner/AppDelegate.swift` (line 12)
+
+**To set up your own Google Maps API:**
+
+1. **Get API Key**
+   - Go to [Google Cloud Console](https://console.cloud.google.com/)
+   - Create/select project
+   - Enable APIs:
+     - Maps SDK for Android
+     - Maps SDK for iOS
+     - Places API
+     - Directions API
+   - Create API Key
+
+2. **Configure API Key**
+   
+   **Android** (`android/app/src/main/AndroidManifest.xml`):
+   ```xml
+   <meta-data 
+       android:name="com.google.android.geo.API_KEY" 
+       android:value="YOUR_ANDROID_API_KEY_HERE"/>
+   ```
+   
+   **iOS** (`ios/Runner/AppDelegate.swift`):
+   ```swift
+   GMSServices.provideAPIKey("YOUR_IOS_API_KEY_HERE")
+   ```
+
+3. **Restrict API Key** (Recommended)
+   - Android: Restrict to your app's SHA-1 fingerprint
+   - iOS: Restrict to your app's Bundle ID
+
+### 🚀 Running the App
+
+```bash
+# Check Flutter installation
+flutter doctor
+
+# Get dependencies
+flutter pub get
+
+# Run on connected device/emulator
+flutter run
+
+# Build for specific platforms
+flutter build apk              # Android APK
+flutter build ios              # iOS (requires Xcode)
+flutter build web              # Web version
+```
+
+### 📱 Platform-Specific Setup
+
+**Android:**
+- Minimum SDK: API 21 (Android 5.0)
+- Target SDK: API 34
+- Requires location permissions for navigation
+
+**iOS:**
+- Minimum iOS: 12.0
+- Requires location usage description in `Info.plist`
+- Requires Xcode 14+ for building
+
+**Web:**
+- Limited Google Maps functionality
+- Firebase Auth works with web
+- Best for admin/dashboard features
+
+## 🔧 Configuration Details
+
+### 🔥 Firebase Configuration Files
+
+**Current Configuration:**
+- **Project ID**: `abuth-navigate-me`
+- **Android Package**: `com.mycompany.abuthnavigate`
+- **iOS Bundle ID**: `com.mycompany.abuthnavigate`
+
+**Configuration Files:**
+```
+📁 Firebase Config Files
+├── android/app/google-services.json           # Android Firebase config
+├── ios/Runner/GoogleService-Info.plist        # iOS Firebase config
+└── lib/backend/firebase/firebase_config.dart  # Flutter Firebase config
+```
+
+**Firebase Services Configured:**
+- ✅ Authentication (Email, Google, Apple, Anonymous)
+- ✅ Cloud Firestore (Database)
+- ✅ Firebase Storage (File storage)
+- ✅ Firebase Performance Monitoring
+
+### 🗺️ Google Maps API Configuration
+
+**Current API Keys:**
+- **Android**: `AIzaSyBeBTVvMhOPReV83q6mu0xyMAJGKs3-w78`
+- **iOS**: `AIzaSyApzJee_0zk0GvKrzUa_P7VPPQnc7iuzbw`
+
+**Configuration Locations:**
+```xml
+<!-- Android: android/app/src/main/AndroidManifest.xml -->
+<meta-data 
+    android:name="com.google.android.geo.API_KEY" 
+    android:value="AIzaSyBeBTVvMhOPReV83q6mu0xyMAJGKs3-w78"/>
+```
+
+```swift
+// iOS: ios/Runner/AppDelegate.swift
+GMSServices.provideAPIKey("AIzaSyApzJee_0zk0GvKrzUa_P7VPPQnc7iuzbw")
+```
+
+**Required Google APIs:**
+- Maps SDK for Android
+- Maps SDK for iOS  
+- Places API (for location search)
+- Directions API (for navigation)
+- Geocoding API (for address lookup)
+
+### 📱 Package Configuration
+
+**Application ID:**
+- Android: `com.mycompany.abuthnavigate`
+- iOS: `com.mycompany.abuthnavigate`
+
+**Deep Linking:**
+- Scheme: `abuthnavigate`
+- Host: `abuthnavigate.com`
 
 ## 🏗️ Project Structure
 
