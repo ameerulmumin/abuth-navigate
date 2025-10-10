@@ -2,18 +2,18 @@
 
 <div align="center">
   <img src="assets/images/ABUTH_SHIKA.jpg" alt="ABUTH Logo" width="200"/>
-  <h3>Campus Navigation System for Ahmadu Bello University Teaching Hospital</h3>
+  <h3>Navigation System for Ahmadu Bello University Teaching Hospital</h3>
 </div>
 
 ## Overview
 
-ABUTH Navigate is a comprehensive Flutter mobile application designed specifically for navigating the Ahmadu Bello University Teaching Hospital (ABUTH) campus in Shika, Nigeria. The app provides real-time navigation, location-based services, and user-friendly interface to help staff, patients, and visitors find their way around the hospital complex efficiently.
+ABUTH Navigate is a comprehensive Flutter mobile application designed specifically for navigating the Ahmadu Bello University Teaching Hospital (ABUTH) in Shika, Nigeria. The app provides real-time navigation, location-based services, and user-friendly interface to help staff, patients, and visitors find their way around the hospital complex efficiently.
 
 ## ✨ Features
 
 ### 🗺️ Navigation & Maps
-- **Interactive Google Maps Integration**: Real-time campus mapping with detailed building layouts
-- **Turn-by-turn Navigation**: GPS-powered directions to any location within the campus
+- **Interactive Google Maps Integration**: Real-time mapping with detailed building layouts
+- **Turn-by-turn Navigation**: GPS-powered directions to any location within the hospital 
 - **Location Search**: Find specific departments, wards, offices, and facilities
 - **Offline Maps**: Continue navigating even without internet connectivity
 
